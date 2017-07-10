@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new shop</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" ng-submit="save()">
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" [(ngModel)]="shop.name" name="name"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Code</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" [(ngModel)]="shop.code" name="contactNumber"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Remark</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" [(ngModel)]="shop.remark" rows="5" name="remark"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="addShop()">Add</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-toggleable-md navbar-light navbar-fixed-top" style="background-color: #e3f2fd;">
+
+  <!-- Show this if user is logged in -->
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul *showMenuBar class="navbar-nav">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+      <li class="nav-item dropdown" [routerLinkActive]="['active']">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">Voucher
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="[shopId, 'vouchers', 'current']">Current</a>
+          <a class="dropdown-item" [routerLink]="[shopId, 'vouchers', 'history']">History</a>
+          <a class="dropdown-item" [routerLink]="[shopId, 'vouchers', 'pending']">Pending</a>
+          <a class="dropdown-item" [routerLink]="[shopId, 'vouchers', 'redeem']">Redeem</a>
+        </div>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="[shopId, 'players']">Player</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Show this if user is logged out -->
+
+  <a *showAuthed="false" class="nav-link" [routerLink]="['/login']">Login</a>
+</nav>
+<h3 class="text-center">{{shopId | uppercase}}</h3>
+
+<div class="jumbotron">
+  <router-outlet></router-outlet>
+  <router-outlet name="popup"></router-outlet>
+</div>
+

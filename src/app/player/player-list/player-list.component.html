@@ -1,0 +1,48 @@
+<template ngbModalContainer></template>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-11"></div>
+    <div class="col-sm-1">
+      <input type="button" class="btn btn-primary" (click)="newContact()" value="+Contact">
+    </div>
+  </div>
+  <br>
+  <div class="row form-check" *ngFor="let shopId of shopIds">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="shopId.checked" [value]="shopId.value" />&nbsp;{{shopId.value}}
+    </label>
+  </div>
+  <br>
+  <h1>Order By:</h1>
+  <select class="form-control" [(ngModel)]="orderProperty" (ngModelChange)="showOrderProperty()">
+    <option [ngValue]="'name'" [selected]="true" >Name</option>
+    <option [ngValue]="'userId'">User ID</option>
+  </select>
+  <br>
+  <loading-container [loading]="loading">
+    <table class="table table-bordered table-hover table-striped">
+      <thead class="thead-inverse">
+      <th>No</th>
+      <th>Name</th>
+      <th>User ID</th>
+      <th>Contact</th>
+      <th>Shop</th>
+      <th>Remark</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let player of players | filter: {shopId: ''}: checked(): false | orderBy: orderProperty; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.userId}}</td>
+        <td>{{player.contactNumber}}</td>
+        <td>{{player.shopId}}</td>
+        <td>{{player.remark}}</td>
+        <td>
+          <a style="cursor: pointer" (click)="editPlayer(player)">Edit</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </loading-container>
+</div>

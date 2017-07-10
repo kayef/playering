@@ -1,0 +1,7 @@
+<loading-container [loading]="loading">
+  <h1>This page shows a list of vouchers that have been redeemed for today</h1>
+  <div class="alert alert-info" role="alert">
+    Showing results from <strong>{{fromDate | date:'medium'}}</strong> to <strong>{{toDate | date:'medium'}}</strong>
+  </div>
+  <voucher-current-list [vouchers]="vouchers"></voucher-current-list>
+</loading-container>

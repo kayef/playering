@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" ng-submit="save()">
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">User ID</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" [(ngModel)]="player.userId" placeholder="Game User ID" name="userId"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" [(ngModel)]="player.name" placeholder="Name" name="name"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Contact Number</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" [(ngModel)]="player.contactNumber" placeholder="0123334444" name="contactNumber"/>
+      </div>
+    </div>
+   <!--
+   TODO: Add selection for shop name, get the list from shop service
+    -->
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Shop</label>
+      <div class="col-sm-9">
+        <select [(ngModel)]="player.shopId" name="selectedShop">
+          <option *ngFor="let shop of shops" [ngValue]="shop.id">{{shop.id}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-3">Remark</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" [(ngModel)]="player.remark" placeholder="Remark" rows="5" name="remark"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="save()">Save</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

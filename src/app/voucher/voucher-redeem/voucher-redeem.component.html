@@ -1,0 +1,35 @@
+<div>
+  <form class="form-inline">
+    <input type="button" class="form-control mb-2 mr-sm-2 btn btn-primary" [disabled]="selectedRows.length === 0"
+           (click)="redeemSelectedVouchers()" value="Redeem">
+  </form>
+  <loading-container [loading]="loading">
+    <table class="table table-bordered table-hover table-striped" *ngIf="vouchers?.length > 0">
+      <thead class="thead-inverse">
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Total</th>
+      <th>Valid</th>
+      <th>Issued Date</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let voucher of vouchers; let i = index" (click)="clickRow(voucher)"
+          [class.active]="rowIsSelected(voucher)">
+        <td>{{voucher.playerName}}</td>
+        <td>{{voucher.playerContactNumber}}</td>
+        <td>{{voucher.total}}</td>
+        <td>{{voucher.isValid}}</td>
+        <td>{{voucher.createdAt | date:'mediumDate'}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <voucher-empty [vouchers]="vouchers"></voucher-empty>
+  </loading-container>
+</div>
+<form class="form-inline">
+  <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="playerContactNumber" placeholder="Contact Number"
+         name="contactNumber">
+  <button type="submit" (click)="getVoucherForPlayerContactNumber()" class="btn btn-primary mb-2 mr-sm-2"
+          [disabled]="!playerContactNumber">Submit
+  </button>
+</form>

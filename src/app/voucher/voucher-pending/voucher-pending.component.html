@@ -1,0 +1,11 @@
+<h2>Pending Vouchers</h2>
+<p>
+  This page shows the currently unredeemed vouchers.
+  <br>
+  We will also be adding new voucher here
+</p>
+<loading-container [loading]="loading">
+  <voucher-list [vouchers]="vouchers"></voucher-list>
+  <voucher-empty [vouchers]="vouchers"></voucher-empty>
+</loading-container>
+<voucher-new-form></voucher-new-form>

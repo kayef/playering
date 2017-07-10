@@ -1,0 +1,23 @@
+<template #rt let-r="result" let-t="term">
+  {{r.name}}
+</template>
+<form>
+    <div class="row">
+      <div class="col-sm-3">
+        <input class="form-control" type="text" [ngbTypeahead]="search" [inputFormatter]="formatter"
+               [resultFormatter]="formatter" (selectItem)="selected($event)"
+               [editable]="false" [(ngModel)]="player" placeholder="Name" name="name" >
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control" type="text" [(ngModel)]="contactNumber" placeholder="Handphone" name="handphone"
+        [disabled]="true">
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control" type="text" [(ngModel)]="total" placeholder="Total" name="total">
+      </div>
+      <div class="col-sm-2">
+        <input  type="button" class="btn btn-primary form-control btn-block" value="+" (click)="addVoucher()"
+                [disabled]="loading || !player || !total">
+      </div>
+    </div>
+</form>

@@ -1,0 +1,7 @@
+<p>
+  This is a form with phone number as input and a submit button
+</p>
+<form class="form-inline">
+  <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="playerContactNumber" placeholder="Contact Number" name="contactNumber">
+  <button type="submit" (click)="getVoucherForPlayerContactNumber()" class="btn btn-primary mb-2 mr-sm-2" [disabled]="!playerContactNumber">Submit</button>
+</form>

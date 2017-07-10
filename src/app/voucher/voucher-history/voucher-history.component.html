@@ -1,0 +1,28 @@
+<div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <ngb-datepicker #fdp [(ngModel)]="fromModel" [maxDate]="toModel"
+        ></ngb-datepicker>
+      </div>
+      <div class="col-sm-3">
+        <ngb-datepicker #tdp [(ngModel)]="toModel" [minDate]="fromModel"></ngb-datepicker>
+      </div>
+      <div class="col-sm-3">
+        <input type="button" class="btn btn-primary btn-block" (click)="query()" value="Query"
+               [disabled]="!fromModel || !toModel">
+      </div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="fromDate && toDate" class="alert alert-info" role="alert">
+    <strong>Showing results from {{fromDate | date:'mediumDate'}} to {{toDate | date:'mediumDate'}}</strong>
+  </div>
+</div>
+
+
+
+<loading-container [loading]="loading">
+  <voucher-current-list [vouchers]="vouchers"></voucher-current-list>
+  <voucher-empty [vouchers]="vouchers"></voucher-empty>
+</loading-container>

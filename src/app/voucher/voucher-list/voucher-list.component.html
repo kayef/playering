@@ -1,0 +1,28 @@
+<div>
+  <table class="table table-bordered table-hover table-striped">
+    <thead class="thead-inverse">
+    <th>No</th>
+    <th>User ID</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Issued Date</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let voucher of vouchers; let i = index;">
+      <td>{{i + 1}}</td>
+      <td>{{voucher.playerUserId}}</td>
+      <td>{{voucher.playerName}}</td>
+      <td>{{voucher.total}}</td>
+      <td>{{voucher.createdAt | date:'mediumDate'}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td style="text-align: right">Total:</td>
+      <td>{{total}}</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
